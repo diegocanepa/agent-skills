@@ -19,8 +19,8 @@ install: absorb
 		echo "Error: uncommitted changes. Commit or stash before syncing."; \
 		exit 1; \
 	fi
-	@git checkout master
-	@git pull origin master
+	@git checkout main
+	@git pull origin main
 	@for pair in $(TARGETS); do \
 		target=$${pair%%:*}; \
 		agent=$${pair##*:}; \

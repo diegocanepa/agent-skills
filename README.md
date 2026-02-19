@@ -60,7 +60,7 @@ description: Brief description for the Agent to decide when to apply it.
 [Patterns, examples, and guidance]
 ```
 
-3. Merge to `master` and run `make install`.
+3. Merge to `main` and run `make install`.
 
 ### 🗑 Uninstall
 ```bash

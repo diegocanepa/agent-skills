@@ -8,10 +8,14 @@ description: 'Expert issue creation for GitHub and GitLab. Uses standardized tem
 ## Workflow
 
 1. **Platform Detection**: Detect if repository is GitHub or GitLab.
-2. **Duplicity Check**: Use `search_issues` (GitHub) or `list_project_issues` (GitLab) to ensure the issue doesn't already exist.
-3. **Template Selection**: Choose the best fit from [references/templates.md](references/templates.md).
-4. **Tool Execution**: Use the platform-specific tool for creation.
-5. **Confirmation**: Report the new issue URL/number.
+2. **Duplicity Check**: Ensure the issue doesn't already exist.
+3. **Drafting**:
+   - Write in **English only**.
+   - Use **Markdown** (Titles, Subtitles, Code Snippets, Items).
+   - Use **Emojis** for a friendly tone.
+   - Choose a template from [references/templates.md](references/templates.md).
+4. **MITM Confirmation**: ALWAYS present the drafted issue to the USER for approval before creation.
+5. **Execution**: Call the tool and report the issue URL/number.
 
 ## Creation Mapping
 
@@ -27,6 +31,10 @@ description: 'Expert issue creation for GitHub and GitLab. Uses standardized tem
 
 ## Guidelines
 
+- **English Only**: All issues must be in English.
+- **Rich Formatting**: Use Markdown (H2, H3, `code`, `- items`).
+- **Friendly Reminder**: Use emojis (e.g., 🐛, ✨, 📅).
+- **MITM Confirmation**: ALWAYS present the drafted issue to the USER for approval before creation.
 - **Search First**: Avoid creating duplicate issues.
 - **Atomic Issues**: One problem or feature per issue.
 - **Labels**: Apply relevant labels from [references/labels.md](references/labels.md).

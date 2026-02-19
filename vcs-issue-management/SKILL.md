@@ -10,9 +10,12 @@ description: 'Manage issue lifecycle: comments, state changes, assignments, and 
 1. **Information Gathering**: Read the latest comments and current state of the issue.
 2. **Action Definition**: Determine if you need to comment, assign, change state, or update the description.
 3. **Drafting**:
-   - Use professional patterns from [references/communication.md](references/communication.md).
-   - Use structured templates for status/blockers from [references/updates.md](references/updates.md).
-4. **Execution**: Map to the correct platform tool (GitHub/GitLab).
+   - Write in **English only**.
+   - Use **Markdown** (Titles, Subtitles, Code Snippets, Items).
+   - Use **Emojis** for clarity and tone.
+   - Follow patterns from [references/communication.md](references/communication.md).
+4. **MITM Confirmation**: **Stop** and present the drafted text to the USER for approval.
+5. **Execution**: After approval, map to the correct platform tool (GitHub/GitLab).
 
 ## Tool Mapping
 

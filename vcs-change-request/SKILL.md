@@ -8,11 +8,13 @@ description: 'Standardized workflow for creating clear and actionable Pull Reque
 ## Workflow
 
 1. **Detect Platform**: Check if working on GitHub (PR) or GitLab (MR).
-2. **Context**: Understand the changes made and find the related issue number.
-3. **Template**: Choose the appropriate template from [references/templates.md](references/templates.md).
-4. **Drafting**: 
-   - Write a title following the format: `<type>: <description> (#<issue-number>)`.
-   - Fill the body/description following the [references/guidelines.md](references/guidelines.md).
+2. **Context**: Understand the changes and find the related issue number.
+3. **Drafting**:
+   - Write in **English only**.
+   - Use **Markdown** (Titles, Subtitles, Code Snippets, Items).
+   - Use **Emojis** for a friendly tone.
+   - Use a template from [references/templates.md](references/templates.md).
+4. **MITM Confirmation**: ALWAYS present the drafted description to the USER for approval.
 5. **Execution**: Call the platform-specific tool.
 
 ## Technical Mapping

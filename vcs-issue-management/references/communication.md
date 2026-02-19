@@ -1,9 +1,13 @@
 # Professional Communication Patterns
 
 ## Tone and Style
+- **English Only**: All communications must be in English.
+- **Emojis Allowed**: Use emojis to provide visual feedback and a friendly tone (e.g., ✅, 🛑, 🔄, ⚠️).
 - **Professional & Collaborative**: Use active voice and focus on solutions.
-- **Empathetic**: Acknowledge the user's or colleague's concerns or questions.
-- **Clarity**: Be concise. Avoid jargon unless necessary for technical depth.
+- **Empathetic**: Acknowledge the user's or colleague's concerns.
+
+## Human-in-the-Loop (MITM)
+- **Confirmation Required**: ALWAYS show the drafted comment to the USER and wait for confirmation before posting it to the issue/VCS.
 
 ## Response Patterns
 

@@ -25,7 +25,6 @@ install: absorb
 		target=$${pair%%:*}; \
 		agent=$${pair##*:}; \
 		mkdir -p "$$target"; \
-		# Remove previously managed skills that no longer exist in the repo \
 		for dir in "$$target"/*/; do \
 			if [ -f "$$dir$(MARKER_FILE)" ]; then \
 				skill=$$(basename "$$dir"); \
@@ -35,16 +34,13 @@ install: absorb
 				fi; \
 			fi; \
 		done; \
-		# Install current skills with marker \
 		for skill in $(SKILL_FOLDERS); do \
 			rm -rf "$$target/$$skill"; \
 			cp -r "$(CURDIR)/$$skill" "$$target/$$skill"; \
 			touch "$$target/$$skill/$(MARKER_FILE)"; \
 			echo "Installed in $$agent: $$skill"; \
-			# Check for recursive installation commands in SKILL.md \
 			cmd=$$(grep -E '^# Installation: (npx|bash)' "$(CURDIR)/$$skill/SKILL.md" | head -n 1 | sed 's/^# Installation: //'); \
 			if [ -n "$$cmd" ]; then \
-				# Replace {AGENT} placeholder with the current agent name \
 				final_cmd=$$(echo "$$cmd" | sed "s/{AGENT}/$$agent/g"); \
 				echo "Executing remote installation for $$skill ($$agent): $$final_cmd"; \
 				eval $$final_cmd; \
@@ -53,11 +49,13 @@ install: absorb
 	done
 
 uninstall:
-	@for target in $(TARGET_DIRS); do \
+	@for pair in $(TARGETS); do \
+		target=$${pair%%:*}; \
+		agent=$${pair##*:}; \
 		for skill in $(SKILL_FOLDERS); do \
 			if [ -d "$$target/$$skill" ]; then \
 				rm -rf "$$target/$$skill"; \
-				echo "Removed from $$(basename $$target): $$skill"; \
+				echo "Removed from $$agent: $$skill"; \
 			fi; \
 		done; \
 	done

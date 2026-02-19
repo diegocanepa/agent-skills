@@ -21,7 +21,21 @@ install: absorb
 	fi
 	@git checkout main
 	@git pull origin main
-	@for pair in $(TARGETS); do \
+	@echo "Select target platform(s):"
+	@echo "1) Claude (Supports Cursor)"
+	@echo "2) Augment"
+	@echo "3) Antigravity"
+	@echo "4) All"
+	@printf "Choose [1-4]: "; \
+	read -r choice; \
+	case "$$choice" in \
+		1) selected="$(CLAUDE_SKILLS_DIR):claude-code" ;; \
+		2) selected="$(AUGMENT_SKILLS_DIR):augment" ;; \
+		3) selected="$(ANTIGRAVITY_SKILLS_DIR):antigravity" ;; \
+		4) selected="$(TARGETS)" ;; \
+		*) echo "Invalid choice"; exit 1 ;; \
+	esac; \
+	for pair in $$selected; do \
 		target=$${pair%%:*}; \
 		agent=$${pair##*:}; \
 		mkdir -p "$$target"; \

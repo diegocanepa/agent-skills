@@ -40,7 +40,7 @@ git clone <repo-url>
 cd agent-skills
 make install
 ```
-*Syncs skills to `~/.claude/skills/`, `~/.augment/skills/`, and `~/.gemini/antigravity/skills/`.*
+*Syncs skills to `~/.claude/skills/`, `~/.augment/skills/`, or `~/.gemini/antigravity/skills/`. The script will ask you to select the target platform during installation.*
 
 ### ➕ Adding a Skill
 

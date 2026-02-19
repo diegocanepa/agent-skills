@@ -1,0 +1,21 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Agent Skills - Temporary directories used for absorption
+.agent/
+.claude/
+.augment/
+.agents/
+
+# Trash and test folders
+test-skill-add/
+node_modules/
+
+# Environment
+.env
+.env.local

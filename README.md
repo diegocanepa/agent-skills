@@ -23,7 +23,7 @@ npx skills add diegocanepa/agent-skills --skill vcs-commit --agent antigravity
 
 ---
 
-### � Getting Started
+### 🚀 Getting Started
 
 1. Configure the [Required MCP Servers](./docs/MCP.md).
 2. Install the skills using the command above.

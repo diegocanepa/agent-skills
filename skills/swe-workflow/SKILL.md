@@ -1,55 +1,40 @@
 ---
-name: swe-workflow
-description: 'Master orchestrator for the software development life cycle. Connects issue creation, branching, coding, committing, and change requests.'
+name: software-engineer-workflow
+description: 'Autonomous orchestrator for the SDLC using specialized agent personas (Architect, Implementer, Reviewer).'
 ---
 
-# Software Engineer Workflow (SDLC)
+# Software Engineer Workflow (Multi-Agent SDLC)
 
-This skill orchestrates the end-to-end process of a feature or fix by inter-connecting specialized VCS skills.
+This skill orchestrates the end-to-end development cycle by rotating between specialized **Agent Personas**.
 
-## 1. Requirement & Analysis
-- **Analyze**: Use `vcs-issue-management` to read and clarify the task.
-- **Execution Plan**: 
-  - If the issue lacks a clear execution plan, update its description to include one.
-  - If a plan already exists, leave it as is.
-- **New Tasks**: If the task is new, use `vcs-issue-creator` to document it properly.
+## 🔄 The Multi-Agent Cycle
 
-## 2. Decomposition & Iteration
-- **Breakdown**: Analyze if the issue can be split into smaller, independent subtasks.
-- **Iterative Plan**: If decomposing, post a single comment in the original issue using `vcs-issue-management` announcing the iterative delivery with the details of it.
-- **Task Tracking**: Include a checklist of subtasks in that comment. **Association**: As tasks are completed, update the checklist with links to their corresponding MR/PR.
-- **Strategy**: Plan for **incremental Change Requests** (<400 lines) for each subtask.
+### 1. Analysis & Planning
+- **Agent**: [The Architect](../../agents/architect/ROLE.md)
+- **Goal**: Analyze the issue, define the execution plan, and post an iterative checklist.
+- **MITM**: Wait for USER approval of the plan.
 
-## 3. Planning & Setup
-- **Issue Life Cycle**: Use `vcs-issue-management` to assign the task and post a `Planning` update with the breakdown.
-- **Branching**: Create a new branch for the specific subtask following `vcs-branch`.
+### 2. Implementation Loop
+- **Agent**: [The Implementer](../../agents/implementer/ROLE.md)
+- **Goal**: For each subtask, create a branch, implementation code, and verify with tests.
+- **Loop**: ` रिसर्च (Research) -> Implementation -> Verification -> Commit `.
 
-## 4. Implementation
-- **Documentation**: Use `backend-coder` to fetch updated language/framework documentation via context MCP tools.
-- **Clean Code**: Follow SOLID principles and patterns defined in `backend-coder`.
-- **Atomic Commits**: Save progress using the `vcs-commit` guidelines.
-- **Reporting**: Use `vcs-issue-management` to post `Status Updates` or report `Blockers`.
+### 3. Quality & Delivery
+- **Agent**: [The Reviewer](../../agents/reviewer/ROLE.md)
+- **Goal**: Create the PR/MR, update the progress checklist, and ensure sync.
+- **MITM**: Wait for USER approval of the PR and progress update.
 
-## 5. Verification
-- **Testing**: Run local tests and linters as defined in the fetched documentation.
-- **Final Polish**: Ensure no secrets or debug logs are left behind.
+## ➕ Role Transitions
+The agent must proactively switch its mindset (persona) according to the phase:
+1. **Architect** creates the map.
+2. **Implementer** walks the path (one subtask at a time).
+3. **Reviewer** sends the report.
+4. **Repeat** until all subtasks in the checklist are finished.
 
-## 6. Delivery (Iterative Change Request)
-- **Submit**: Create a Pull Request (GitHub) or Merge Request (GitLab) using `vcs-change-request` for the completed subtask.
-- **Reference**: Link the subtask in the description and **update the checklist** in the iterative plan comment, adding the link to this new MR/PR.
-- **Repeat**: Go back to Step 3 for the next subtask until the main issue is resolved.
-
-## General Guidelines
-- **Conciseness**: Avoid excessive or redundant comments. 
-- **Efficiency**: Do not post duplicate information across multiple comments. Consolidate updates in existing threads or the main issue description.
-
-## 7. Review & Closure
-- **Feedback**: Respond to review comments using `vcs-issue-management` patterns.
-- **Cleanup**: Once merged, close the issue and the change request.
-
-## Quick Reference to Specialized Skills
+## Specialized Skills Used
 - [Issue Creator](../vcs-issue-creator/SKILL.md)
 - [Issue Management](../vcs-issue-management/SKILL.md)
-- [Branching Strategy](../vcs-branch/SKILL.md)
+- [Branching](../vcs-branch/SKILL.md)
 - [Commit Standards](../vcs-commit/SKILL.md)
-- [Change Request (PR/MR)](../vcs-change-request/SKILL.md)
+- [Change Request](../vcs-change-request/SKILL.md)
+- [Backend Coder](../backend-coder/SKILL.md)

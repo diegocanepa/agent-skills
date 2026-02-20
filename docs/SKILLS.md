@@ -4,7 +4,7 @@ These modular skills enhance development workflows across GitHub and GitLab.
 
 | Skill | Description |
 | :--- | :--- |
-| **[swe-workflow](../skills/swe-workflow/SKILL.md)** | Master orchestrator for the software development life cycle. |
+| **[swe-workflow](../skills/swe-workflow/SKILL.md)** | Autonomous orchestrator using specialized [Agent Roles](./AGENTS.md). |
 | **[backend-coder](../skills/backend-coder/SKILL.md)** | SOLID principles, clean architecture, and context-driven documentation. |
 | **[vcs-branch](../skills/vcs-branch/SKILL.md)** | Standardized Git branch naming and strategy. |
 | **[vcs-commit](../skills/vcs-commit/SKILL.md)** | Conventional commits following best practices and safety protocols. |

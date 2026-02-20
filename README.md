@@ -5,6 +5,7 @@ Collection of modular skills for AI agents to enhance development workflows. Thi
 ## 📂 Documentation
 
 - **[Available Skills](./docs/SKILLS.md)**: Explore the list of specialized development and VCS skills.
+- **[Agent Roles](./docs/AGENTS.md)**: Specialized personas (Architect, Implementer, Reviewer) defined in the `/agents` directory.
 - **[Required MCP Servers](./docs/MCP.md)**: Setup and configuration guides for GitHub, GitLab, and Context7.
 
 ---

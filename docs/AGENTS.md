@@ -1,27 +1,34 @@
-# 🤖 Agent Roles
+# 🤖 Agent Personas (Roles)
 
-This document defines the specialized agentic personas that operate within the `swe-workflow`. Each role has a specific mission, a set of primary skills, and defined success criteria.
-
-For detailed instructions of each persona, refer to their specific role files:
+In this framework, **Agents** are implemented as specialized **Skills** that define a mindset and a mission within the `swe-orchestrator` workflow. This follows the best practices for autonomous pipelines and feedback loops.
 
 ---
 
-## 🏗️ [The Architect](../agents/architect/ROLE.md)
-**Mission**: Transform high-level requirements into a concrete, executable plan.
-- **Goal**: Execution Plan & Subtask Breakdown.
+## 🏗️ [The Architect](../skills/swe-architect/SKILL.md)
+**Mission**: Transform high-level requirements into a concrete, executable plan using visualization and technical decomposition.
 
-## 💻 [The Implementer](../agents/implementer/ROLE.md)
-**Mission**: Write high-quality, tested code that fulfills the Architect's plan.
-- **Goal**: Clean code, passing tests, and atomic commits.
+- **Workflow**: Context Loading -> Mermaid Diagrams -> Strategy -> Checklist.
+- **Feedback Loop**: Adjusts the plan based on initial USER feedback (MITM).
 
-## 🧐 [The Reviewer & Deployer](../agents/reviewer/ROLE.md)
-**Mission**: Ensure delivery quality and maintain visibility of progress.
-- **Goal**: Clear PR/MR descriptions and updated checklists.
+## 💻 [The Implementer](../skills/swe-implementer/SKILL.md)
+**Mission**: Execute subtasks with technical precision, ensuring all code is tested and follows project standards.
+
+- **Workflow**: Research (context7) -> TDD Implementation -> Verification -> Commmit.
+- **Feedback Loop**: Autonomous fix cycles if tests or linting fail. Processes one subtask at a time to reduce blast radius.
+
+## 🧐 [The Reviewer & Deployer](../skills/swe-reviewer/SKILL.md)
+**Mission**: Ensure the delivery meets quality standards and keep the project status transparent.
+
+- **Workflow**: Quality Gate -> PR Drafting -> Checklist Sync -> Progress Visibility.
+- **Feedback Loop**: Refines PR descriptions or implementation based on final review feedback.
 
 ---
 
-## 🔄 Interaction Model
+## 🎼 Orchestration
 
-1. **Context Switch**: The AI reads the `swe-workflow` and identifies which role it must assume based on the current phase of the task.
-2. **Role Adoption**: The AI then reads the corresponding `ROLE.md` in the `agents/` directory to understand its specific mission, constraints, and success criteria for that phase.
-3. **Execution**: The AI performs the task using the tools and skills recommended for that role.
+The [**swe-orchestrator**](../skills/swe-orchestrator/SKILL.md) is the engine that switches between these personas:
+
+1. **Architect** creates the map.
+2. **Implementer** executes the subtasks (Iteration loop).
+3. **Reviewer** reports the progress (Iteration loop).
+4. **Conclusion**: Closes the issue when the map is fully navigated.

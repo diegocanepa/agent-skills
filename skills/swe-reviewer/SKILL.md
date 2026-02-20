@@ -26,5 +26,6 @@ Ensure the quality of the delivery and maintain clear progress visibility on the
 - [ ] MITM Approval for the delivery.
 
 ## Specialized Skills
+- [**vcs-branch**](../vcs-branch/SKILL.md)
 - [**vcs-change-request**](../vcs-change-request/SKILL.md)
 - [**vcs-issue-management**](../vcs-issue-management/SKILL.md)

@@ -1,5 +1,5 @@
 ---
-name: mr-description
+name: vcs-change-request
 description: 'Standardized workflow for creating clear and actionable Pull Requests (GitHub) or Merge Requests (GitLab).'
 ---
 

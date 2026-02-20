@@ -1,5 +1,5 @@
 ---
-name: issue-creation
+name: vcs-issue-creator
 description: 'Expert issue creation for GitHub and GitLab. Uses standardized templates and labels to file clear, actionable bugs, features, and tasks.'
 ---
 

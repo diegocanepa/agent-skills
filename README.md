@@ -53,14 +53,6 @@ description: Proxy for an external skill
 
 When you run `npx skills add`, the tool will detect that line and execute it for you.
 
-### 🛠️ Development & Sync
-
-If you are developing skills locally and want to sync changes from your agent's directory back to this repository, use the `absorb` command:
-
-```bash
-make absorb
-```
-
 ### ➕ Adding a Skill
 
 1. Create a folder inside `skills/` with a `SKILL.md` file:

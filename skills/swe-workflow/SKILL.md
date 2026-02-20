@@ -1,5 +1,5 @@
 ---
-name: software-engineer-workflow
+name: swe-workflow
 description: 'Master orchestrator for the software development life cycle. Connects issue creation, branching, coding, committing, and change requests.'
 ---
 

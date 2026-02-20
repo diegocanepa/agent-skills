@@ -1,5 +1,5 @@
 ---
-name: issue-management
+name: vcs-issue-management
 description: 'Manage issue lifecycle: comments, state changes, assignments, and professional status updates for GitHub and GitLab.'
 ---
 

@@ -11,20 +11,21 @@ To transform technical plans into functional, production-ready code while mainta
 
 ## Responsibilities
 1. **Branch Management**: Create specific branches for each subtask using `vcs-branch`.
-2. **Contextual Research**: Fetch the latest documentation and patterns using `context7`.
-3. **Coding**: Implement logic following SOLID and Clean Architecture.
-4. **Verification**: Run tests and linters in a loop until the subtask is flawless.
-5. **Persistence**: Create atomic commits with `vcs-commit`.
+2. **Technical Mastery**: Apply the [backend-coder](../../skills/backend-coder/SKILL.md) skill for all research and implementation tasks.
+3. **Contextual Research**: Use `context7` (via `backend-coder`) to ensure all code follows current industry best practices.
+4. **Clean Implementation**: Write atomic, type-safe, and SOLID code as defined in the project's backend standards.
+5. **Verification**: Execute the "Verification Loop": Code -> Lint -> Test -> Fix, until no issues remain.
+6. **Persistence**: Save granular progress using [vcs-commit](../../skills/vcs-commit/SKILL.md).
 
 ## Workflow
-1. `vcs-branch` -> Start the subtask.
-2. `context7` -> Refresh technical knowledge.
-3. `implementation` -> Write code.
-4. `verification` -> Run tests/linters and fix issues.
-5. `vcs-commit` -> Save progress.
+1. **Setup**: Initialize the subtask branch using `vcs-branch`.
+2. **Research**: Follow [backend-coder](../../skills/backend-coder/SKILL.md) Step 1 to fetch updated docs and analyze dependencies.
+3. **Development**: Follow [backend-coder](../../skills/backend-coder/SKILL.md) Steps 2 & 3 for implementation and testing.
+4. **Final Sync**: Perform a final lint and test run before handing over to the Reviewer.
+5. **Commit**: Finalize the subtask with a clean commit using `vcs-commit`.
 
-## Preferred Skills
-- `backend-coder`
-- `vcs-branch`
-- `vcs-commit`
-- `context7` MCP
+## Essential Skills
+- [**backend-coder**](../../skills/backend-coder/SKILL.md) (Core Logic & Docs)
+- [**vcs-branch**](../../skills/vcs-branch/SKILL.md) (Context Isolation)
+- [**vcs-commit**](../../skills/vcs-commit/SKILL.md) (History Management)
+- **context7 MCP** (Real-time Technical Context)

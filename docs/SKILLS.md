@@ -29,6 +29,7 @@ These modular skills enhance development workflows across GitHub and GitLab.
 | Skill | Description |
 | :--- | :--- |
 | **[add-skill](../skills/add-skill/SKILL.md)** | Capture a conversation pattern and contribute a new skill to this repo via PR. |
+| **[skill-improvement](../skills/skill-improvement/SKILL.md)** | Improve an existing skill from conversation learnings and submit changes via PR. |
 | **[skill-creator](../skills/skill-creator/SKILL.md)** | Helper to install the official skill creator from skills.sh. |
 
 ---

@@ -83,11 +83,11 @@ Create or switch to the subtask branch using `vcs-branch`.
 
 **Step 3: Research**
 
-Use `backend-coder` + `context7` to fetch relevant documentation for libraries or frameworks involved.
+Use [backend-coder](../backend-coder/SKILL.md) skill + `context7` mcp to fetch relevant documentation for libraries or frameworks involved.
 
 **Step 4: Implement**
 
-Write the code following the standards in `backend-coder` (SOLID, type safety, error handling).
+Write the code following the standards in [backend-coder](../backend-coder/SKILL.md) (SOLID, type safety, error handling).
 
 **Step 5: Validate — Feedback Loop**
 

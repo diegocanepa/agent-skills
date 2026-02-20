@@ -10,7 +10,7 @@ Execute specific subtasks by writing high-quality code that satisfies the Archit
 
 ## Autonomous Workflow & Feedback Loop
 1. **Context Initialization**:
-   - create/Switch to the subtask branch using `vcs-branch`.
+   - Create or switch to the subtask branch using `vcs-branch`.
 2. **Technical Research**:
    - Use [backend-coder](../backend-coder/SKILL.md) skill + `context7` mcp to fetch the latest documentation.
 3. **Implementation Cycle**:

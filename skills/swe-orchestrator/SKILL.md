@@ -1,5 +1,5 @@
 ---
-name: swe-workflow-orchestrator
+name: swe-orchestrator
 description: "Autonomous SDLC orchestrator. Coordinates the Architect, Implementer, and Reviewer personas using structured workflows, feedback loops, and issue-as-ledger tracking. Use when starting any development task from an issue."
 ---
 

@@ -15,7 +15,19 @@ Collection of modular skills for AI agents to enhance development workflows.
 | **[vcs-change-request](./skills/vcs-change-request/SKILL.md)** | Templates and guidelines for reviewable MR/PR descriptions. |
 | **[skill-creator](./skills/skill-creator/SKILL.md)** | Helper to install the official skill creator from skills.sh. |
 
-### �️ Required MCP Servers
+### 📦 Installation
+
+You can install these skills directly into your agent (Claude, Augment, or Antigravity) using the `skills` CLI:
+
+```bash
+# Install all skills from this repository
+npx skills add diegocanepa/agent-skills --agent antigravity
+
+# Install a specific skill
+npx skills add diegocanepa/agent-skills --skill vcs-commit --agent antigravity
+```
+
+### 🖥️ Required MCP Servers
 
 The following MCP servers must be installed and configured for these skills to function at full capacity:
 
@@ -25,9 +37,9 @@ The following MCP servers must be installed and configured for these skills to f
 | **GitLab** | Official GitLab platform interaction. | [mcp/gitlab.md](./mcp/gitlab.md) |
 | **Context7** | Dynamic documentation & context provider. | [mcp/context7.md](./mcp/context7.md) |
 
-### �🔄 Remote/Proxy Skills
+### 🔄 Remote/Proxy Skills
 
-You can create a "Proxy Skill" in this repo that automatically triggers an external installation when you run `make install`. This is perfect if you want to keep your manual skills and external skills managed from one place.
+You can create a "Proxy Skill" in this repo that automatically triggers an external installation when you run `npx skills add`. This is perfect if you want to keep your manual skills and external skills managed from one place.
 
 To do this, create a `SKILL.md` with a special comment:
 
@@ -39,24 +51,21 @@ description: Proxy for an external skill
 # Installation: npx -y skills add some-org/repo --skill some-skill --agent {AGENT}
 ```
 
-When you run `make install`, the Makefile will detect that line and execute it for you.
+When you run `npx skills add`, the tool will detect that line and execute it for you.
 
-### 🌐 External Skills (Manual Import)
+### 🛠️ Development & Sync
 
-### ⚙️ Installation
+If you are developing skills locally and want to sync changes from your agent's directory back to this repository, use the `absorb` command:
 
 ```bash
-git clone <repo-url>
-cd agent-skills
-make install
+make absorb
 ```
-*Syncs skills to `~/.claude/skills/`, `~/.augment/skills/`, or `~/.gemini/antigravity/skills/`. The script will ask you to select the target platform during installation.*
 
 ### ➕ Adding a Skill
 
-1. Create a folder with a `SKILL.md` file:
+1. Create a folder inside `skills/` with a `SKILL.md` file:
 ```
-my-skill/
+skills/my-skill/
 └── SKILL.md
 ```
 
@@ -70,9 +79,4 @@ description: Brief description for the Agent to decide when to apply it.
 [Patterns, examples, and guidance]
 ```
 
-3. Merge to `main` and run `make install`.
-
-### 🗑 Uninstall
-```bash
-make uninstall
-```
+3. Merge to `main` and use `npx skills add`.

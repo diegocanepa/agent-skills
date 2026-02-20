@@ -9,10 +9,10 @@ MARKER_FILE := .agent-skills-managed
 TARGETS := $(CLAUDE_SKILLS_DIR):claude-code $(AUGMENT_SKILLS_DIR):augment $(ANTIGRAVITY_SKILLS_DIR):antigravity
 
 # Find all directories containing SKILL.md
-# 1. Manual skills in root
+# 1. Manual skills in skills/ folder
 # 2. External skills temporarily in .agent/skills, etc.
-SKILL_FOLDERS := $(patsubst %/SKILL.md,%,$(wildcard */SKILL.md))
-EXTERNAL_LOCS := .agent/skills .claude/skills .augment/skills .agents/skills skills
+SKILL_FOLDERS := $(patsubst skills/%/SKILL.md,%,$(wildcard skills/*/SKILL.md))
+EXTERNAL_LOCS := .agent/skills .claude/skills .augment/skills .agents/skills
 
 install: absorb
 	@if [ -n "$$(git status --porcelain)" ]; then \
@@ -50,10 +50,10 @@ install: absorb
 		done; \
 		for skill in $(SKILL_FOLDERS); do \
 			rm -rf "$$target/$$skill"; \
-			cp -r "$(CURDIR)/$$skill" "$$target/$$skill"; \
+			cp -r "$(CURDIR)/skills/$$skill" "$$target/$$skill"; \
 			touch "$$target/$$skill/$(MARKER_FILE)"; \
 			echo "Installed in $$agent: $$skill"; \
-			cmd=$$(grep -E '^# Installation: (npx|bash)' "$(CURDIR)/$$skill/SKILL.md" | head -n 1 | sed 's/^# Installation: //'); \
+			cmd=$$(grep -E '^# Installation: (npx|bash)' "$(CURDIR)/skills/$$skill/SKILL.md" | head -n 1 | sed 's/^# Installation: //'); \
 			if [ -n "$$cmd" ]; then \
 				final_cmd=$$(echo "$$cmd" | sed "s/{AGENT}/$$agent/g"); \
 				echo "Executing remote installation for $$skill ($$agent): $$final_cmd"; \
@@ -93,13 +93,13 @@ absorb:
 			for skill_path in "$$loc"/*; do \
 				if [ -d "$$skill_path" ] && [ -f "$$skill_path/SKILL.md" ]; then \
 					skill_name=$$(basename "$$skill_path"); \
-					if [ -d "./$$skill_name" ]; then \
+					if [ -d "./skills/$$skill_name" ]; then \
 						echo "Updating existing skill: $$skill_name"; \
-						rm -rf "./$$skill_name"; \
+						rm -rf "./skills/$$skill_name"; \
 					else \
 						echo "Absorbing new skill: $$skill_name"; \
 					fi; \
-					mv "$$skill_path" "./$$skill_name"; \
+					mv "$$skill_path" "./skills/$$skill_name"; \
 				fi; \
 			done; \
 			rmdir "$$loc" 2>/dev/null || true; \

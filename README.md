@@ -6,16 +6,26 @@ Collection of modular skills for AI agents to enhance development workflows.
 
 | Skill | Description |
 | :--- | :--- |
-| **[backend-coder](./backend-coder/SKILL.md)** | SOLID development, design patterns, and clean architecture. |
-| **[branch-naming](./branch-naming/SKILL.md)** | Standardized Git branch naming conventions. |
-| **[commit-guidelines](./commit-guidelines/SKILL.md)** | Conventional commits and intelligent staging. |
-| **[github-issues](./github-issues/SKILL.md)** | MCP-powered GitHub issue management. |
-| **[golang](./golang/SKILL.md)** | Idiomatic Go patterns, concurrency, and error handling. |
-| **[mr-description](./mr-description/SKILL.md)** | Templates for clear, reviewable MR/PR descriptions. |
-| **[python](./python/SKILL.md)** | Modern Python with type hints and PEP standards. |
-| **[software-engineer-workflow](./software-engineer-workflow/SKILL.md)** | End-to-end software engineer lifecycle. |
+| **[swe-workflow](./skills/swe-workflow/SKILL.md)** | Master orchestrator for the software development life cycle. |
+| **[backend-coder](./skills/backend-coder/SKILL.md)** | SOLID principles, clean architecture, and context-driven documentation. |
+| **[vcs-branch](./skills/vcs-branch/SKILL.md)** | Standardized Git branch naming and strategy. |
+| **[vcs-commit](./skills/vcs-commit/SKILL.md)** | Conventional commits following best practices and safety protocols. |
+| **[vcs-issue-creator](./skills/vcs-issue-creator/SKILL.md)** | Expert issue creation for GitHub and GitLab using structured templates. |
+| **[vcs-issue-management](./skills/vcs-issue-management/SKILL.md)** | Manage issue lifecycle with professional communication and updates. |
+| **[vcs-change-request](./skills/vcs-change-request/SKILL.md)** | Templates and guidelines for reviewable MR/PR descriptions. |
+| **[skill-creator](./skills/skill-creator/SKILL.md)** | Helper to install the official skill creator from skills.sh. |
 
-### 🔄 Remote/Proxy Skills
+### �️ Required MCP Servers
+
+The following MCP servers must be installed and configured for these skills to function at full capacity:
+
+| Server | Description | Documentation |
+| :--- | :--- | :--- |
+| **GitHub** | Official GitHub platform interaction. | [mcp/github.md](./mcp/github.md) |
+| **GitLab** | Official GitLab platform interaction. | [mcp/gitlab.md](./mcp/gitlab.md) |
+| **Context7** | Dynamic documentation & context provider. | [mcp/context7.md](./mcp/context7.md) |
+
+### �🔄 Remote/Proxy Skills
 
 You can create a "Proxy Skill" in this repo that automatically triggers an external installation when you run `make install`. This is perfect if you want to keep your manual skills and external skills managed from one place.
 

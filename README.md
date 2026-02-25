@@ -42,7 +42,7 @@ make install
 | GitHub Copilot | `.github/agents/` | `~/.copilot/agents/` |
 | Cursor | `.cursor/agents/` | `~/.cursor/agents/` |
 | Claude Code | `.claude/agents/` | `~/.claude/agents/` |
-| Antigravity | `.agent/agents/` | `~/.agent/agents/` |
+| Antigravity | `.agent/agents/` | `~/.gemini/agents/` |
 | OpenAI Codex | `.codex/agents/` | `~/.codex/agents/` |
 
 > **Note:** GitHub Copilot agents are installed as `<name>.agent.md`. All other tools use `<name>.md`.

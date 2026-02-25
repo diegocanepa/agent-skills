@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "target": "vscode",
+  "items": [
+    {"type": "agents", "source": "agents"},
+    {"type": "prompts", "source": "prompts"},
+    {"type": "skills", "source": "skills"}
+  ]
+}

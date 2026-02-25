@@ -4,10 +4,16 @@
 ##  Skills are installed separately via the npx CLI:
 ##    npx skills add diegocanepa/agent-skills --agent <tool>
 ##
-##  This Makefile only manages agent personas:
+##  This Makefile manages agent personas and VS Code assets:
 ##    make install    → interactive: choose tool + scope, installs agents
 ##    make uninstall  → interactive: removes installed agents
 ##    make list       → show installed agents and their locations
+##    make install-vscode    → install VS Code agents/prompts/skills
+##    make uninstall-vscode  → uninstall VS Code agents/prompts/skills
+##    make dry-run-vscode    → dry-run VS Code install
+##    make install-vscode-global    → install VS Code assets to GLOBAL_ROOT
+##    make uninstall-vscode-global  → uninstall VS Code assets from GLOBAL_ROOT
+##    make dry-run-vscode-global    → dry-run VS Code global install
 ##    make help       → show this message
 ## =============================================================================
 
@@ -36,7 +42,7 @@ CLAUDE_GLOBAL_AGENTS    := $(HOME)/.claude/agents
 
 ## Antigravity (Gemini)
 ANTIGRAVITY_PROJECT_AGENTS  := .agent/agents
-ANTIGRAVITY_GLOBAL_AGENTS   := $(HOME)/.agent/agents
+ANTIGRAVITY_GLOBAL_AGENTS   := $(HOME)/.gemini/agents
 
 ## OpenAI Codex
 CODEX_PROJECT_AGENTS    := .codex/agents
@@ -52,7 +58,7 @@ CODEX_AGENT_EXT         := .md
 
 # ─── Main targets ─────────────────────────────────────────────────────────────
 
-.PHONY: help install uninstall list _do_install _do_uninstall _list_location
+.PHONY: help install uninstall list install-vscode uninstall-vscode dry-run-vscode install-vscode-global uninstall-vscode-global dry-run-vscode-global _do_install _do_uninstall _list_location
 
 help:
 	@echo ""
@@ -63,6 +69,12 @@ help:
 	@echo "  make install    Install agent personas for a chosen tool"
 	@echo "  make uninstall  Remove installed agent personas"
 	@echo "  make list       Show installed agents and locations"
+	@echo "  make install-vscode    Install VS Code agents/prompts/skills"
+	@echo "  make uninstall-vscode  Uninstall VS Code agents/prompts/skills"
+	@echo "  make dry-run-vscode    Dry-run VS Code install"
+	@echo "  make install-vscode-global    Install VS Code assets into GLOBAL_ROOT"
+	@echo "  make uninstall-vscode-global  Uninstall VS Code assets from GLOBAL_ROOT"
+	@echo "  make dry-run-vscode-global    Dry-run VS Code global install"
 	@echo "  make help       Show this message"
 	@echo ""
 	@echo "  Supported tools: copilot | cursor | claude | antigravity | codex"
@@ -71,6 +83,29 @@ help:
 	@echo "  💡 To install skills, use:"
 	@echo "     npx skills add diegocanepa/agent-skills --agent <tool>"
 	@echo ""
+
+# ─── VS Code Install (agents + prompts + skills) ────────────────────────────
+
+install-vscode:
+	@python3 installer/installer.py install --target vscode
+
+uninstall-vscode:
+	@python3 installer/installer.py uninstall --target vscode
+
+dry-run-vscode:
+	@python3 installer/installer.py install --target vscode --dry-run
+
+install-vscode-global:
+	@if [ -z "$(GLOBAL_ROOT)" ]; then echo "GLOBAL_ROOT is required"; exit 1; fi
+	@python3 installer/installer.py install --target vscode --scope global --global-root "$(GLOBAL_ROOT)"
+
+uninstall-vscode-global:
+	@if [ -z "$(GLOBAL_ROOT)" ]; then echo "GLOBAL_ROOT is required"; exit 1; fi
+	@python3 installer/installer.py uninstall --target vscode --scope global --global-root "$(GLOBAL_ROOT)"
+
+dry-run-vscode-global:
+	@if [ -z "$(GLOBAL_ROOT)" ]; then echo "GLOBAL_ROOT is required"; exit 1; fi
+	@python3 installer/installer.py install --target vscode --scope global --global-root "$(GLOBAL_ROOT)" --dry-run
 
 # ─── Install ──────────────────────────────────────────────────────────────────
 

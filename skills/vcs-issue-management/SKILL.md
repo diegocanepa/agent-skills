@@ -33,7 +33,20 @@ description: 'Manage issue lifecycle: comments, state changes, assignments, and 
 - **Planning**: Propose an approach before starting complex work to get early feedback.
 - **Professionalism**: Always maintain a solution-oriented tone.
 
+## SWE Workflow Integration
+
+For software engineering workflows, use specialized templates from [references/swe-templates.md](references/swe-templates.md):
+
+- **Architectural Analysis** - Phase 1: Technical approach documentation
+- **Implementation Plan** - Phase 2: Subtask breakdown and execution strategy
+- **Subtask Progress** - During implementation: Progress updates
+- **Review & MR Creation** - Phase 4: Code review and merge request
+- **Feature Completion** - Final: Closing the loop
+
+For persistent state tracking in the repository, refer to [references/plan-tracking.md](references/plan-tracking.md) for `.plan/` file management.
+
 ## Guidelines
 - **Be Concise**: Avoid repetitive or redundant comments.
 - **Context Awareness**: Link relevant commits, PRs, or other issues.
 - **State Hygiene**: Close issues promptly when work is completed and verified.
+- **Template Usage**: Always use appropriate templates from [references/](references/) for consistency.

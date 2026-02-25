@@ -1,36 +1,129 @@
 ---
 name: swe-implementer
-description: "Development persona for writing clean, tested code and executing subtasks within the SWE workflow."
+description: "Called per-subtask by swe-orchestrator. Implements ONE subtask in dedicated branch. Uses context7 for current documentation."
 ---
 
 # 💻 SWE Implementer
 
-## Mission
-Execute specific subtasks by writing high-quality code that satisfies the Architect's plan and passes all quality gates.
+**Called By:** [swe-orchestrator](../swe-orchestrator/SKILL.md) → per subtask  
+**Input:** Subtask details, branch name, `.plan/` file  
+**Output:** Code + tests committed, `.plan/` updated, ready for review
 
-## Autonomous Workflow & Feedback Loop
-1. **Context Initialization**:
-   - Create or switch to the subtask branch using `vcs-branch`.
-2. **Technical Research**:
-   - Use [backend-coder](../backend-coder/SKILL.md) skill + `context7` mcp to fetch the latest documentation.
-3. **Implementation Cycle**:
-   - **Step A (Code)**: Implement the logic following SOLID principles.
-   - **Step B (Test)**: Write and run unit/integration tests.
-   - **Step C (Feedback Loop)**: 
-     - IF **tests/lint fail**: Identify the error, fix the code, and return to Step B.
-     - IF **tests pass**: Proceed.
-4. **Final Synchronization**:
-   - Perform a final verification of the entire module affected.
-5. **Persistence**: Commit changes using `vcs-commit`.
+## Quick Start
 
-## Success Criteria
-- [ ] Code follows [backend-coder](../backend-coder/SKILL.md) standards.
-- [ ] 0 Linting errors.
-- [ ] 100% of subtask core tests passing.
-- [ ] Atomic commit following Conventional Commit format.
+1. **Understand subtask**: Read planning details from `.plan/` file
+2. **Create branch**: `git checkout -b feature/[issue]-[subtask-name]`
+3. **Query context7**: Get current lib/framework docs BEFORE coding
+4. **Implement**: Code + tests following [backend-coder](../backend-coder/SKILL.md) standards
+5. **Validate**: `npm run lint` (0 errors) + `npm run test` (all pass)
+6. **Commit**: Include code, tests, updated `.plan/`
+7. **Hand off**: Ready for [swe-reviewer](../swe-reviewer/SKILL.md)
+
+## Detailed Steps
+
+### 1. Verify Dependencies
+- Check `.plan/` file - any blocked subtasks?
+- If dependency not met: Alert orchestrator, stop
+
+### 2. Branch Setup
+```bash
+git checkout -b feature/[issue-number]-[subtask-name]
+git pull origin main  # Ensure up-to-date
+```
+
+### 3. Research (MANDATORY)
+Query **context7 MCP** for:
+- Library/framework version docs
+- API references
+- Best practices for this task
+- Known pitfalls to avoid
+
+Why: Ensures current APIs, avoids deprecated patterns, follows best practices.
+
+### 4. Implement
+
+**Code:**
+- Follow architecture from swe-architect
+- Apply SOLID principles
+- Clean, readable code
+- Proper error handling
+- Type safety
+
+**Tests:**
+- Unit tests: happy path + edge cases
+- Integration tests: if specified
+- All tests passing required
+
+### 5. Validate Loop
+```bash
+npm run lint   # 0 errors?
+npm run test   # All pass?
+```
+If failures: Fix → Repeat until all pass ✅
+
+### 6. Final Checklist
+- [ ] Subtask 100% implemented (no partial work)
+- [ ] All tests passing
+- [ ] 0 linting errors
+- [ ] No debug code (console.logs, debugger)
+- [ ] Only intended files modified
+- [ ] Code is maintainable and clear
+
+### 7. Update `.plan/` File
+```markdown
+### Subtask N: [Name]
+- **Status:** ✅ Completed
+- **Branch:** `feature/123-subtask-name`
+- **Files:** [list of files changed]
+- **Commit:** [Will add after commit below]
+- **Notes:** [Implementation decisions]
+```
+
+### 8. Commit
+```bash
+git add .
+git commit -m "feat(scope): implement subtask N - description
+
+- Key change 1
+- Key change 2
+
+Relates to #[issue-number]"
+```
+
+### 9. Update `.plan/` with Commit Hash
+```bash
+# Get hash
+git log -1 --pretty=format:"%H"
+
+# Add to .plan/ file, then commit this small update
+```
+
+### 10. Done
+Hand off to [swe-reviewer](../swe-reviewer/SKILL.md)
+
+## Key Rules
+- ✅ **One subtask only** per call
+- ✅ **Dedicated branch** - keep independent
+- ✅ **context7 mandatory** - query before coding
+- ✅ **Tests required** - if specified, no exceptions
+- ✅ **All checks must pass** - lint + tests before commit
+
+## Blockers
+
+**Dependency not met:**
+- Alert orchestrator: "Cannot start - Subtask X not complete"
+
+**Tests won't pass (>3 attempts):**
+- Update `.plan/`: Status = 🛑 Blocked
+- Post Blocker Report to issue
+- Alert USER immediately
+
+**Unclear scope:**
+- Ask orchestrator for clarification
 
 ## Specialized Skills
-- [**backend-coder**](../backend-coder/SKILL.md) (TDD & Implementation)
-- [**vcs-branch**](../vcs-branch/SKILL.md)
-- [**vcs-commit**](../vcs-commit/SKILL.md)
+- [vcs-branch](../vcs-branch/SKILL.md)
+- [vcs-commit](../vcs-commit/SKILL.md)
+- [backend-coder](../backend-coder/SKILL.md)
 - **context7 MCP**
+- [vcs-issue-management](../vcs-issue-management/SKILL.md)
